@@ -8,6 +8,7 @@ import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.events.GameStateChanged;
+import net.runelite.api.events.CommandExecuted;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
@@ -51,6 +52,26 @@ public class EquipmentRequirementsPlugin extends Plugin
 		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
 		{
 			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Equipment Requirements plugin loaded!", null);
+		}
+	}
+
+	public void reloadRequirements()
+	{
+		EquipmentRequirementsData.loadRequirements();
+		log.info("Equipment requirements reloaded.");
+		// Trigger overlay redraw if needed
+		overlayManager.remove(overlay);
+		overlayManager.add(overlay);
+	}
+
+	@Subscribe
+	public void onCommandExecuted(CommandExecuted event)
+	{
+		String command = event.getCommand().toLowerCase();
+		if (command.equals("reloadeqreq"))
+		{
+			reloadRequirements();
+			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Equipment requirements reloaded!", null);
 		}
 	}
 

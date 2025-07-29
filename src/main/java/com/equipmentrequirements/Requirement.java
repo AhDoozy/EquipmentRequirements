@@ -1,22 +1,10 @@
 package com.equipmentrequirements;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import net.runelite.api.Client;
-import net.runelite.api.Skill;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-public class Requirement
+public interface Requirement
 {
-	private Skill skill;
-	private int level;
-	private String message;
+    boolean isMet(Client client);
 
-	public boolean isMet(Client client)
-	{
-		return client.getRealSkillLevel(skill) >= level;
-	}
+    String getMessage();
 }

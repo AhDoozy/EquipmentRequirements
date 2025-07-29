@@ -4,7 +4,6 @@ import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 
 import net.runelite.api.Client;
-import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.overlay.WidgetItemOverlay;
 import net.runelite.client.util.Text;
@@ -12,7 +11,8 @@ import net.runelite.api.widgets.WidgetItem;
 
 import javax.inject.Inject;
 import java.awt.*;
-import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 @Singleton
 @Slf4j
@@ -54,57 +54,99 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 			return;
 		}
 
-		Requirement requirement = EquipmentRequirementsData.ITEM_REQUIREMENTS.get(itemName);
+		List<Requirement> requirements = EquipmentRequirementsData.ITEM_REQUIREMENTS.get(itemName);
+		boolean unmet = false;
 
-		if (!requirement.isMet(client))
+		// Prepare lines and their met status
+		List<String> lines = new ArrayList<>();
+		List<Boolean> metStatus = new ArrayList<>();
+
+		for (Requirement req : requirements)
 		{
-			graphics.setFont(new Font("Arial", Font.BOLD, 22));
-			graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-			FontMetrics fm = graphics.getFontMetrics();
-			int textWidth = fm.stringWidth("i");
-			int x = bounds.x + bounds.width - textWidth - 2;
-			int y = bounds.y + bounds.height - 2;
-
-			// Draw outline
-			graphics.setColor(Color.BLACK);
-			graphics.drawString("i", x - 1, y);
-			graphics.drawString("i", x + 1, y);
-			graphics.drawString("i", x, y - 1);
-			graphics.drawString("i", x, y + 1);
-
-			// Draw main "i"
-			graphics.setColor(Color.RED);
-			graphics.drawString("i", x, y);
-
-			if (item.getCanvasBounds().contains(mouse))
+			boolean met = req.isMet(client);
+			if (!met)
 			{
-				String tooltip = requirement.getMessage();
-				Font tooltipFont = new Font("RuneScape Bold", Font.PLAIN, 16);
-				graphics.setFont(tooltipFont);
-				FontMetrics tooltipFontMetrics = graphics.getFontMetrics();
-				int tooltipWidth = tooltipFontMetrics.stringWidth(tooltip);
-				int tooltipHeight = tooltipFontMetrics.getHeight();
+				unmet = true;
+			}
+			lines.add(req.getMessage());
+			metStatus.add(met);
+		}
 
-				int tooltipX = bounds.x + (bounds.width - tooltipWidth) / 2;
-				int tooltipY = bounds.y - 4;
-				int yOffset = tooltipY - tooltipHeight;
+		if (!unmet)
+		{
+			return;
+		}
 
-				// Draw OSRS-style tooltip box (solid background with border)
-				graphics.setColor(new Color(60, 52, 41)); // dark brown background
-				graphics.fillRect(tooltipX - 4, yOffset - 4, tooltipWidth + 8, tooltipHeight + 8);
+		graphics.setFont(new Font("Arial", Font.BOLD, 22));
+		graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+		FontMetrics fm = graphics.getFontMetrics();
+		int textWidth = fm.stringWidth("i");
+		int x = bounds.x + bounds.width - textWidth - 2;
+		int y = bounds.y + bounds.height - 2;
 
-				graphics.setColor(new Color(90, 82, 71)); // lighter brown border
-				graphics.drawRect(tooltipX - 4, yOffset - 4, tooltipWidth + 8, tooltipHeight + 8);
+		// Draw outline
+		graphics.setColor(Color.BLACK);
+		graphics.drawString("i", x - 1, y);
+		graphics.drawString("i", x + 1, y);
+		graphics.drawString("i", x, y - 1);
+		graphics.drawString("i", x, y + 1);
 
-				// Draw yellow text with black border
+		// Draw main "i"
+		graphics.setColor(Color.RED);
+		graphics.drawString("i", x, y);
+
+		if (item.getCanvasBounds().contains(mouse))
+		{
+			Font tooltipFont = new Font("RuneScape Bold", Font.PLAIN, 16);
+			graphics.setFont(tooltipFont);
+			FontMetrics tooltipFontMetrics = graphics.getFontMetrics();
+
+			int lineHeight = tooltipFontMetrics.getHeight();
+
+			// Calculate max line width
+			int maxWidth = 0;
+			for (String line : lines)
+			{
+				int lineWidth = tooltipFontMetrics.stringWidth(line);
+				if (lineWidth > maxWidth)
+				{
+					maxWidth = lineWidth;
+				}
+			}
+
+			int paddingX = 8;
+			int paddingY = 6;
+			int boxWidth = maxWidth + 2 * paddingX;
+			int boxHeight = lineHeight * lines.size() + 2 * paddingY;
+
+			int tooltipX = bounds.x - paddingX;
+			int tooltipY = bounds.y - boxHeight - paddingY;
+
+			graphics.setColor(new Color(60, 52, 41)); // background
+			graphics.fillRect(tooltipX, tooltipY, boxWidth, boxHeight);
+
+			graphics.setColor(new Color(90, 82, 71)); // border
+			graphics.drawRect(tooltipX, tooltipY, boxWidth, boxHeight);
+
+			int yOffset = tooltipY + paddingY + tooltipFontMetrics.getAscent();
+
+			for (int i = 0; i < lines.size(); i++)
+			{
+				String line = lines.get(i);
+				boolean met = metStatus.get(i);
+
+				// Draw outline
 				graphics.setColor(Color.BLACK);
-				graphics.drawString(tooltip, tooltipX - 1, tooltipY - 2);
-				graphics.drawString(tooltip, tooltipX + 1, tooltipY - 2);
-				graphics.drawString(tooltip, tooltipX, tooltipY - 3);
-				graphics.drawString(tooltip, tooltipX, tooltipY - 1);
+				graphics.drawString(line, tooltipX + paddingX - 1, yOffset - 1);
+				graphics.drawString(line, tooltipX + paddingX + 1, yOffset - 1);
+				graphics.drawString(line, tooltipX + paddingX, yOffset - 2);
+				graphics.drawString(line, tooltipX + paddingX, yOffset);
 
-				graphics.setColor(new Color(255, 255, 0)); // RS yellow
-				graphics.drawString(tooltip, tooltipX, tooltipY - 2);
+				// Draw main text with color based on met status
+				graphics.setColor(met ? new Color(0, 255, 0) : new Color(255, 0, 0)); // green if met, red if unmet
+				graphics.drawString(line, tooltipX + paddingX, yOffset - 1);
+
+				yOffset += lineHeight;
 			}
 		}
 	}
