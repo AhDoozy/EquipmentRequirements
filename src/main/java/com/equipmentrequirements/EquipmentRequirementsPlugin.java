@@ -1,4 +1,5 @@
-package com.example;
+package com.equipmentrequirements;
+import net.runelite.client.ui.overlay.OverlayManager;
 
 import com.google.inject.Provides;
 import javax.inject.Inject;
@@ -14,26 +15,34 @@ import net.runelite.client.plugins.PluginDescriptor;
 
 @Slf4j
 @PluginDescriptor(
-	name = "Example"
+	name = "Equipment Requirements"
 )
-public class ExamplePlugin extends Plugin
+public class EquipmentRequirementsPlugin extends Plugin
 {
 	@Inject
 	private Client client;
 
 	@Inject
-	private ExampleConfig config;
+	private EquipmentRequirementsConfig config;
+
+	@Inject
+	private OverlayManager overlayManager;
+
+	@Inject
+	private EquipmentRequirementsOverlay overlay;
 
 	@Override
 	protected void startUp() throws Exception
 	{
-		log.info("Example started!");
+		log.info("Equipment Requirements started!");
+		overlayManager.add(overlay);
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
-		log.info("Example stopped!");
+		log.info("Equipment Requirements stopped!");
+		overlayManager.remove(overlay);
 	}
 
 	@Subscribe
@@ -41,13 +50,13 @@ public class ExamplePlugin extends Plugin
 	{
 		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
 		{
-			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Example says " + config.greeting(), null);
+			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Equipment Requirements plugin loaded!", null);
 		}
 	}
 
 	@Provides
-	ExampleConfig provideConfig(ConfigManager configManager)
+	EquipmentRequirementsConfig provideConfig(ConfigManager configManager)
 	{
-		return configManager.getConfig(ExampleConfig.class);
+		return configManager.getConfig(EquipmentRequirementsConfig.class);
 	}
 }
