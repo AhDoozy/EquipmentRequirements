@@ -1,12 +1,11 @@
 package com.equipmentrequirements;
 
-import com.equipmentrequirements.QuestRequirement;
-
 import net.runelite.api.Skill;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.Arrays;
+import com.equipmentrequirements.QuestRequirement;
 
 public class EquipmentRequirementsData
 {
@@ -19,6 +18,94 @@ public class EquipmentRequirementsData
 
     public static void loadRequirements()
     {
+        ITEM_REQUIREMENTS.put("Priest gown", Arrays.asList(
+                new QuestRequirement("Biohazard")
+        ));
+
+        ITEM_REQUIREMENTS.put("Priest gown", Arrays.asList(
+                new QuestRequirement("Biohazard")
+        ));
+
+        ITEM_REQUIREMENTS.put("Pink boots", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Green boots", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Blue boots", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Cream boots", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Turquoise boots", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Pink robe top", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Green robe top", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Blue robe top", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Cream robe top", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Turquoise robe top", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Pink robe bottoms", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Green robe bottoms", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Blue robe bottoms", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Cream robe bottoms", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Turquoise robe bottoms", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Pink hat", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Green hat", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Blue hat", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Cream hat", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
+        ITEM_REQUIREMENTS.put("Turquoise hat", Arrays.asList(
+                new QuestRequirement("The Grand Tree")
+        ));
+
         ITEM_REQUIREMENTS.put("Steel thrownaxe", Arrays.asList(
                 new SkillRequirement(Skill.RANGED, 5)
         ));
@@ -211,6 +298,16 @@ public class EquipmentRequirementsData
                 new SkillRequirement(Skill.RANGED, 40)
         ));
 
+        ITEM_REQUIREMENTS.put("White apron", Arrays.asList(
+                new QuestRequirement("Pirate's Treasure"),
+                new QuestRequirement("Mourning's End Part I"),
+                new QuestRequirement("Mourning's End Part II")
+        ));
+
+        ITEM_REQUIREMENTS.put("Pink skirt", Arrays.asList(
+                new QuestRequirement("Prince Ali Rescue")
+        ));
+
         ITEM_REQUIREMENTS.put("Green d'hide vambraces", Arrays.asList(
                 new SkillRequirement(Skill.RANGED, 40)
         ));
@@ -280,7 +377,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Rune chainbody", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Steel platebody", Arrays.asList(
@@ -300,7 +398,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Rune platebody", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Hardleather body", Arrays.asList(
@@ -314,7 +413,8 @@ public class EquipmentRequirementsData
 
         ITEM_REQUIREMENTS.put("Green d'hide body", Arrays.asList(
                 new SkillRequirement(Skill.DEFENCE, 40),
-                new SkillRequirement(Skill.RANGED, 40)
+                new SkillRequirement(Skill.RANGED, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Steel med helm", Arrays.asList(
@@ -386,7 +486,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Dragon sq shield", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 60)
+                new SkillRequirement(Skill.DEFENCE, 60),
+                new QuestRequirement("Legends' Quest")
         ));
 
         ITEM_REQUIREMENTS.put("Steel kiteshield", Arrays.asList(
@@ -426,7 +527,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Dragon dagger", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 60)
+                new SkillRequirement(Skill.ATTACK, 60),
+                new QuestRequirement("Lost City")
         ));
 
         ITEM_REQUIREMENTS.put("Black dagger", Arrays.asList(
@@ -450,15 +552,21 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Dragon dagger(p)", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 60)
+                new SkillRequirement(Skill.ATTACK, 60),
+                new QuestRequirement("Lost City")
         ));
 
         ITEM_REQUIREMENTS.put("Black dagger(p)", Arrays.asList(
                 new SkillRequirement(Skill.ATTACK, 10)
         ));
 
+        ITEM_REQUIREMENTS.put("Iron spear", Arrays.asList(
+                new QuestRequirement("Tai Bwo Wannai Trio")
+        ));
+
         ITEM_REQUIREMENTS.put("Steel spear", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 5)
+                new SkillRequirement(Skill.ATTACK, 5),
+                new QuestRequirement("Tai Bwo Wannai Trio")
         ));
 
         ITEM_REQUIREMENTS.put("Mithril spear", Arrays.asList(
@@ -477,8 +585,13 @@ public class EquipmentRequirementsData
                 new SkillRequirement(Skill.ATTACK, 60)
         ));
 
+        ITEM_REQUIREMENTS.put("Iron spear(p)", Arrays.asList(
+                new QuestRequirement("Tai Bwo Wannai Trio")
+        ));
+
         ITEM_REQUIREMENTS.put("Steel spear(p)", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 5)
+                new SkillRequirement(Skill.ATTACK, 5),
+                new QuestRequirement("Tai Bwo Wannai Trio")
         ));
 
         ITEM_REQUIREMENTS.put("Mithril spear(p)", Arrays.asList(
@@ -510,7 +623,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Rune pickaxe", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 40)
+                new SkillRequirement(Skill.ATTACK, 40),
+                new QuestRequirement("Between a Rock...")
         ));
 
         ITEM_REQUIREMENTS.put("Steel sword", Arrays.asList(
@@ -554,7 +668,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Dragon longsword", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 60)
+                new SkillRequirement(Skill.ATTACK, 60),
+                new QuestRequirement("Lost City")
         ));
 
         ITEM_REQUIREMENTS.put("Steel 2h sword", Arrays.asList(
@@ -562,7 +677,9 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Black 2h sword", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Observatory Quest"),
+                new QuestRequirement("Shades of Mort'ton")
         ));
 
         ITEM_REQUIREMENTS.put("Mithril 2h sword", Arrays.asList(
@@ -658,7 +775,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Dragon battleaxe", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 60)
+                new SkillRequirement(Skill.ATTACK, 60),
+                new QuestRequirement("Heroes' Quest")
         ));
 
         ITEM_REQUIREMENTS.put("Mystic fire staff", Arrays.asList(
@@ -686,7 +804,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Black mace", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Shades of Mort'ton")
         ));
 
         ITEM_REQUIREMENTS.put("Mithril mace", Arrays.asList(
@@ -702,7 +821,30 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Dragon mace", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 60)
+                new SkillRequirement(Skill.ATTACK, 60),
+                new QuestRequirement("Heroes' Quest")
+        ));
+
+        ITEM_REQUIREMENTS.put("Amulet of accuracy", Arrays.asList(
+                new QuestRequirement("Imp Catcher")
+        ));
+
+        ITEM_REQUIREMENTS.put("Anti-dragon shield", Arrays.asList(
+                new QuestRequirement("Dragon Slayer I")
+        ));
+
+        ITEM_REQUIREMENTS.put("Amulet of glory", Arrays.asList(
+                new QuestRequirement("Dragon Slayer I"),
+                new QuestRequirement("Heroes' Quest")
+        ));
+
+        ITEM_REQUIREMENTS.put("Amulet of glory(4)", Arrays.asList(
+                new QuestRequirement("Dragon Slayer I"),
+                new QuestRequirement("Heroes' Quest")
+        ));
+
+        ITEM_REQUIREMENTS.put("Unpowered symbol", Arrays.asList(
+                new QuestRequirement("Observatory Quest")
         ));
 
         ITEM_REQUIREMENTS.put("Blue d'hide vambraces", Arrays.asList(
@@ -821,7 +963,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Rune platebody (g)", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Rune platelegs (g)", Arrays.asList(
@@ -837,7 +980,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Rune platebody (t)", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Rune platelegs (t)", Arrays.asList(
@@ -852,8 +996,13 @@ public class EquipmentRequirementsData
                 new SkillRequirement(Skill.DEFENCE, 40)
         ));
 
+        ITEM_REQUIREMENTS.put("Pirate's hat", Arrays.asList(
+                new QuestRequirement("Cabin Fever")
+        ));
+
         ITEM_REQUIREMENTS.put("Zamorak platebody", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Zamorak platelegs", Arrays.asList(
@@ -869,7 +1018,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Saradomin platebody", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Saradomin platelegs", Arrays.asList(
@@ -885,7 +1035,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Guthix platebody", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Guthix platelegs", Arrays.asList(
@@ -901,7 +1052,17 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Ogre arrow", Arrays.asList(
-                new SkillRequirement(Skill.RANGED, 30)
+                new SkillRequirement(Skill.RANGED, 30),
+                new QuestRequirement("Big Chompy Bird Hunting"),
+                new QuestRequirement("Recipe for Disaster")
+        ));
+
+        ITEM_REQUIREMENTS.put("Elemental shield", Arrays.asList(
+                new QuestRequirement("Elemental Workshop I")
+        ));
+
+        ITEM_REQUIREMENTS.put("Silver sickle", Arrays.asList(
+                new QuestRequirement("Nature Spirit")
         ));
 
         ITEM_REQUIREMENTS.put("Lava battlestaff", Arrays.asList(
@@ -923,7 +1084,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Steel claws", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 5)
+                new SkillRequirement(Skill.ATTACK, 5),
+                new QuestRequirement("Death Plateau")
         ));
 
         ITEM_REQUIREMENTS.put("Black claws", Arrays.asList(
@@ -935,11 +1097,20 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Adamant claws", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 30)
+                new SkillRequirement(Skill.ATTACK, 30),
+                new QuestRequirement("Death Plateau")
         ));
 
         ITEM_REQUIREMENTS.put("Rune claws", Arrays.asList(
                 new SkillRequirement(Skill.ATTACK, 40)
+        ));
+
+        ITEM_REQUIREMENTS.put("Climbing boots", Arrays.asList(
+                new QuestRequirement("Death Plateau")
+        ));
+
+        ITEM_REQUIREMENTS.put("Spiked boots", Arrays.asList(
+                new QuestRequirement("Death Plateau")
         ));
 
         ITEM_REQUIREMENTS.put("Granite shield", Arrays.asList(
@@ -972,12 +1143,14 @@ public class EquipmentRequirementsData
 
         ITEM_REQUIREMENTS.put("Rune halberd", Arrays.asList(
                 new SkillRequirement(Skill.ATTACK, 40),
-                new SkillRequirement(Skill.STRENGTH, 20)
+                new SkillRequirement(Skill.STRENGTH, 20),
+                new QuestRequirement("Regicide")
         ));
 
         ITEM_REQUIREMENTS.put("Dragon halberd", Arrays.asList(
                 new SkillRequirement(Skill.ATTACK, 60),
-                new SkillRequirement(Skill.STRENGTH, 30)
+                new SkillRequirement(Skill.STRENGTH, 30),
+                new QuestRequirement("Regicide")
         ));
 
         ITEM_REQUIREMENTS.put("Splitbark helm", Arrays.asList(
@@ -1042,7 +1215,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Gilded platebody", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Gilded platelegs", Arrays.asList(
@@ -1062,19 +1236,43 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Archer helm", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 45)
+                new SkillRequirement(Skill.DEFENCE, 45),
+                new QuestRequirement("The Fremennik Trials")
         ));
 
         ITEM_REQUIREMENTS.put("Berserker helm", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 45)
+                new SkillRequirement(Skill.DEFENCE, 45),
+                new QuestRequirement("The Fremennik Trials")
         ));
 
         ITEM_REQUIREMENTS.put("Warrior helm", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 45)
+                new SkillRequirement(Skill.DEFENCE, 45),
+                new QuestRequirement("The Fremennik Trials")
         ));
 
         ITEM_REQUIREMENTS.put("Farseer helm", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 45)
+                new SkillRequirement(Skill.DEFENCE, 45),
+                new QuestRequirement("The Fremennik Trials")
+        ));
+
+        ITEM_REQUIREMENTS.put("Fremennik boots", Arrays.asList(
+                new QuestRequirement("The Fremennik Trials")
+        ));
+
+        ITEM_REQUIREMENTS.put("Fremennik robe", Arrays.asList(
+                new QuestRequirement("The Fremennik Trials")
+        ));
+
+        ITEM_REQUIREMENTS.put("Fremennik hat", Arrays.asList(
+                new QuestRequirement("The Fremennik Trials")
+        ));
+
+        ITEM_REQUIREMENTS.put("Fremennik gloves", Arrays.asList(
+                new QuestRequirement("The Fremennik Trials")
+        ));
+
+        ITEM_REQUIREMENTS.put("Games necklace(8)", Arrays.asList(
+                new QuestRequirement("Tears of Guthix")
         ));
 
         ITEM_REQUIREMENTS.put("Dragon platelegs", Arrays.asList(
@@ -1197,11 +1395,13 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Black spear", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Shades of Mort'ton")
         ));
 
         ITEM_REQUIREMENTS.put("Black spear(p)", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Shades of Mort'ton")
         ));
 
         ITEM_REQUIREMENTS.put("Dragon plateskirt", Arrays.asList(
@@ -1209,12 +1409,18 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Dragon scimitar", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 60)
+                new SkillRequirement(Skill.ATTACK, 60),
+                new QuestRequirement("Monkey Madness I")
+        ));
+
+        ITEM_REQUIREMENTS.put("Willow blackjack", Arrays.asList(
+                new QuestRequirement("The Feud")
         ));
 
         ITEM_REQUIREMENTS.put("Ancient staff", Arrays.asList(
                 new SkillRequirement(Skill.ATTACK, 50),
-                new SkillRequirement(Skill.MAGIC, 50)
+                new SkillRequirement(Skill.MAGIC, 50),
+                new QuestRequirement("Desert Treasure I")
         ));
 
         ITEM_REQUIREMENTS.put("Ahrim's hood", Arrays.asList(
@@ -1343,19 +1549,55 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Comp ogre bow", Arrays.asList(
-                new SkillRequirement(Skill.RANGED, 30)
+                new SkillRequirement(Skill.RANGED, 30),
+                new QuestRequirement("Zogre Flesh Eaters")
+        ));
+
+        ITEM_REQUIREMENTS.put("Mining helmet", Arrays.asList(
+                new QuestRequirement("The Lost Tribe")
+        ));
+
+        ITEM_REQUIREMENTS.put("Bone club", Arrays.asList(
+                new QuestRequirement("The Lost Tribe")
+        ));
+
+        ITEM_REQUIREMENTS.put("Woven top", Arrays.asList(
+                new QuestRequirement("Royal Trouble")
+        ));
+
+        ITEM_REQUIREMENTS.put("Woven top", Arrays.asList(
+                new QuestRequirement("Royal Trouble")
+        ));
+
+        ITEM_REQUIREMENTS.put("Woven top", Arrays.asList(
+                new QuestRequirement("Royal Trouble")
+        ));
+
+        ITEM_REQUIREMENTS.put("Trousers", Arrays.asList(
+                new QuestRequirement("Royal Trouble")
+        ));
+
+        ITEM_REQUIREMENTS.put("Trousers", Arrays.asList(
+                new QuestRequirement("Royal Trouble")
+        ));
+
+        ITEM_REQUIREMENTS.put("Trousers", Arrays.asList(
+                new QuestRequirement("Royal Trouble")
         ));
 
         ITEM_REQUIREMENTS.put("Initiate sallet", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 20)
+                new SkillRequirement(Skill.DEFENCE, 20),
+                new QuestRequirement("Recruitment Drive")
         ));
 
         ITEM_REQUIREMENTS.put("Initiate hauberk", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 20)
+                new SkillRequirement(Skill.DEFENCE, 20),
+                new QuestRequirement("Recruitment Drive")
         ));
 
         ITEM_REQUIREMENTS.put("Initiate cuisse", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 10)
+                new SkillRequirement(Skill.DEFENCE, 10),
+                new QuestRequirement("Recruitment Drive")
         ));
 
         ITEM_REQUIREMENTS.put("Steel arrow(p+)", Arrays.asList(
@@ -1519,7 +1761,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Dragon dagger(p+)", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 60)
+                new SkillRequirement(Skill.ATTACK, 60),
+                new QuestRequirement("Lost City")
         ));
 
         ITEM_REQUIREMENTS.put("Black dagger(p+)", Arrays.asList(
@@ -1543,15 +1786,21 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Dragon dagger(p++)", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 60)
+                new SkillRequirement(Skill.ATTACK, 60),
+                new QuestRequirement("Lost City")
         ));
 
         ITEM_REQUIREMENTS.put("Black dagger(p++)", Arrays.asList(
                 new SkillRequirement(Skill.ATTACK, 10)
         ));
 
+        ITEM_REQUIREMENTS.put("Iron spear(p+)", Arrays.asList(
+                new QuestRequirement("Tai Bwo Wannai Trio")
+        ));
+
         ITEM_REQUIREMENTS.put("Steel spear(p+)", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 5)
+                new SkillRequirement(Skill.ATTACK, 5),
+                new QuestRequirement("Tai Bwo Wannai Trio")
         ));
 
         ITEM_REQUIREMENTS.put("Mithril spear(p+)", Arrays.asList(
@@ -1570,8 +1819,13 @@ public class EquipmentRequirementsData
                 new SkillRequirement(Skill.ATTACK, 60)
         ));
 
+        ITEM_REQUIREMENTS.put("Iron spear(p++)", Arrays.asList(
+                new QuestRequirement("Tai Bwo Wannai Trio")
+        ));
+
         ITEM_REQUIREMENTS.put("Steel spear(p++)", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 5)
+                new SkillRequirement(Skill.ATTACK, 5),
+                new QuestRequirement("Tai Bwo Wannai Trio")
         ));
 
         ITEM_REQUIREMENTS.put("Mithril spear(p++)", Arrays.asList(
@@ -1591,53 +1845,65 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Black spear(p+)", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Shades of Mort'ton")
         ));
 
         ITEM_REQUIREMENTS.put("Black spear(p++)", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Shades of Mort'ton")
         ));
 
         ITEM_REQUIREMENTS.put("Rock-shell helm", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("The Fremennik Trials")
         ));
 
         ITEM_REQUIREMENTS.put("Rock-shell plate", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I"),
+                new QuestRequirement("The Fremennik Trials")
         ));
 
         ITEM_REQUIREMENTS.put("Rock-shell legs", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("The Fremennik Trials")
         ));
 
         ITEM_REQUIREMENTS.put("Spined helm", Arrays.asList(
                 new SkillRequirement(Skill.DEFENCE, 40),
-                new SkillRequirement(Skill.RANGED, 40)
+                new SkillRequirement(Skill.RANGED, 40),
+                new QuestRequirement("The Fremennik Trials")
         ));
 
         ITEM_REQUIREMENTS.put("Spined body", Arrays.asList(
                 new SkillRequirement(Skill.DEFENCE, 40),
-                new SkillRequirement(Skill.RANGED, 40)
+                new SkillRequirement(Skill.RANGED, 40),
+                new QuestRequirement("The Fremennik Trials")
         ));
 
         ITEM_REQUIREMENTS.put("Spined chaps", Arrays.asList(
                 new SkillRequirement(Skill.DEFENCE, 40),
-                new SkillRequirement(Skill.RANGED, 40)
+                new SkillRequirement(Skill.RANGED, 40),
+                new QuestRequirement("The Fremennik Trials")
         ));
 
         ITEM_REQUIREMENTS.put("Skeletal helm", Arrays.asList(
                 new SkillRequirement(Skill.DEFENCE, 40),
-                new SkillRequirement(Skill.MAGIC, 40)
+                new SkillRequirement(Skill.MAGIC, 40),
+                new QuestRequirement("The Fremennik Trials")
         ));
 
         ITEM_REQUIREMENTS.put("Skeletal top", Arrays.asList(
                 new SkillRequirement(Skill.DEFENCE, 40),
-                new SkillRequirement(Skill.MAGIC, 40)
+                new SkillRequirement(Skill.MAGIC, 40),
+                new QuestRequirement("The Fremennik Trials")
         ));
 
         ITEM_REQUIREMENTS.put("Skeletal bottoms", Arrays.asList(
                 new SkillRequirement(Skill.DEFENCE, 40),
-                new SkillRequirement(Skill.MAGIC, 40)
+                new SkillRequirement(Skill.MAGIC, 40),
+                new QuestRequirement("The Fremennik Trials")
         ));
 
         ITEM_REQUIREMENTS.put("Spined boots", Arrays.asList(
@@ -1694,6 +1960,10 @@ public class EquipmentRequirementsData
                 new SkillRequirement(Skill.RANGED, 30)
         ));
 
+        ITEM_REQUIREMENTS.put("Maple blackjack", Arrays.asList(
+                new QuestRequirement("The Feud")
+        ));
+
         ITEM_REQUIREMENTS.put("Toktz-xil-ul", Arrays.asList(
                 new SkillRequirement(Skill.RANGED, 60)
         ));
@@ -1734,100 +2004,124 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("White claws", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White battleaxe", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White dagger", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White dagger(p)", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White dagger(p+)", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White dagger(p++)", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White halberd", Arrays.asList(
                 new SkillRequirement(Skill.ATTACK, 10),
-                new SkillRequirement(Skill.STRENGTH, 5)
+                new SkillRequirement(Skill.STRENGTH, 5),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White mace", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White magic staff", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White sword", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White longsword", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White 2h sword", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White scimitar", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White warhammer", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 10)
+                new SkillRequirement(Skill.ATTACK, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White chainbody", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 10)
+                new SkillRequirement(Skill.DEFENCE, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White platebody", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 10)
+                new SkillRequirement(Skill.DEFENCE, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White boots", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 10)
+                new SkillRequirement(Skill.DEFENCE, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White med helm", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 10)
+                new SkillRequirement(Skill.DEFENCE, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White full helm", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 10)
+                new SkillRequirement(Skill.DEFENCE, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White platelegs", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 10)
+                new SkillRequirement(Skill.DEFENCE, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White plateskirt", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 10)
+                new SkillRequirement(Skill.DEFENCE, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White gloves", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 10)
+                new SkillRequirement(Skill.DEFENCE, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White sq shield", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 10)
+                new SkillRequirement(Skill.DEFENCE, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("White kiteshield", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 10)
+                new SkillRequirement(Skill.DEFENCE, 10),
+                new QuestRequirement("Wanted!")
         ));
 
         ITEM_REQUIREMENTS.put("Seercull", Arrays.asList(
@@ -1836,6 +2130,14 @@ public class EquipmentRequirementsData
 
         ITEM_REQUIREMENTS.put("Dragon axe", Arrays.asList(
                 new SkillRequirement(Skill.ATTACK, 61)
+        ));
+
+        ITEM_REQUIREMENTS.put("Black desert shirt", Arrays.asList(
+                new QuestRequirement("Shadow of the Storm")
+        ));
+
+        ITEM_REQUIREMENTS.put("Black desert robe", Arrays.asList(
+                new QuestRequirement("Shadow of the Storm")
         ));
 
         ITEM_REQUIREMENTS.put("Granite legs", Arrays.asList(
@@ -1972,12 +2274,14 @@ public class EquipmentRequirementsData
 
         ITEM_REQUIREMENTS.put("Green d'hide body (g)", Arrays.asList(
                 new SkillRequirement(Skill.DEFENCE, 40),
-                new SkillRequirement(Skill.RANGED, 40)
+                new SkillRequirement(Skill.RANGED, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Green d'hide body (t)", Arrays.asList(
                 new SkillRequirement(Skill.DEFENCE, 40),
-                new SkillRequirement(Skill.RANGED, 40)
+                new SkillRequirement(Skill.RANGED, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Blue d'hide body (g)", Arrays.asList(
@@ -2021,12 +2325,50 @@ public class EquipmentRequirementsData
                 new SkillRequirement(Skill.MAGIC, 40)
         ));
 
+        ITEM_REQUIREMENTS.put("Wooden spoon", Arrays.asList(
+                new QuestRequirement("Recipe for Disaster")
+        ));
+
+        ITEM_REQUIREMENTS.put("Egg whisk", Arrays.asList(
+                new QuestRequirement("Recipe for Disaster")
+        ));
+
+        ITEM_REQUIREMENTS.put("Spork", Arrays.asList(
+                new QuestRequirement("Recipe for Disaster")
+        ));
+
+        ITEM_REQUIREMENTS.put("Spatula", Arrays.asList(
+                new QuestRequirement("Recipe for Disaster")
+        ));
+
+        ITEM_REQUIREMENTS.put("Frying pan", Arrays.asList(
+                new QuestRequirement("Recipe for Disaster")
+        ));
+
+        ITEM_REQUIREMENTS.put("Skewer", Arrays.asList(
+                new QuestRequirement("Recipe for Disaster")
+        ));
+
+        ITEM_REQUIREMENTS.put("Rolling pin", Arrays.asList(
+                new QuestRequirement("Recipe for Disaster")
+        ));
+
         ITEM_REQUIREMENTS.put("Kitchen knife", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 40)
+                new SkillRequirement(Skill.ATTACK, 40),
+                new QuestRequirement("Recipe for Disaster")
+        ));
+
+        ITEM_REQUIREMENTS.put("Meat tenderiser", Arrays.asList(
+                new QuestRequirement("Recipe for Disaster")
+        ));
+
+        ITEM_REQUIREMENTS.put("Cleaver", Arrays.asList(
+                new QuestRequirement("Recipe for Disaster")
         ));
 
         ITEM_REQUIREMENTS.put("Gadderhammer", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 30)
+                new SkillRequirement(Skill.ATTACK, 30),
+                new QuestRequirement("In Aid of the Myreque")
         ));
 
         ITEM_REQUIREMENTS.put("Dorgeshuun crossbow", Arrays.asList(
@@ -2034,7 +2376,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Bone bolts", Arrays.asList(
-                new SkillRequirement(Skill.RANGED, 28)
+                new SkillRequirement(Skill.RANGED, 28),
+                new QuestRequirement("The Lost Tribe")
         ));
 
         ITEM_REQUIREMENTS.put("Black mask (10)", Arrays.asList(
@@ -2249,12 +2592,29 @@ public class EquipmentRequirementsData
                 new SkillRequirement(Skill.DEFENCE, 30)
         ));
 
+        ITEM_REQUIREMENTS.put("Elemental helmet", Arrays.asList(
+                new QuestRequirement("Elemental Workshop I"),
+                new QuestRequirement("Elemental Workshop II")
+        ));
+
+        ITEM_REQUIREMENTS.put("Mind shield", Arrays.asList(
+                new QuestRequirement("Elemental Workshop I"),
+                new QuestRequirement("Elemental Workshop II")
+        ));
+
+        ITEM_REQUIREMENTS.put("Mind helmet", Arrays.asList(
+                new QuestRequirement("Elemental Workshop I"),
+                new QuestRequirement("Elemental Workshop II")
+        ));
+
         ITEM_REQUIREMENTS.put("Chinchompa", Arrays.asList(
-                new SkillRequirement(Skill.RANGED, 45)
+                new SkillRequirement(Skill.RANGED, 45),
+                new QuestRequirement("Eagles' Peak")
         ));
 
         ITEM_REQUIREMENTS.put("Red chinchompa", Arrays.asList(
-                new SkillRequirement(Skill.RANGED, 55)
+                new SkillRequirement(Skill.RANGED, 55),
+                new QuestRequirement("Eagles' Peak")
         ));
 
         ITEM_REQUIREMENTS.put("Green spiky vambraces", Arrays.asList(
@@ -2271,6 +2631,10 @@ public class EquipmentRequirementsData
 
         ITEM_REQUIREMENTS.put("Black spiky vambraces", Arrays.asList(
                 new SkillRequirement(Skill.RANGED, 70)
+        ));
+
+        ITEM_REQUIREMENTS.put("Strung rabbit foot", Arrays.asList(
+                new QuestRequirement("Eagles' Peak")
         ));
 
         ITEM_REQUIREMENTS.put("Orange salamander", Arrays.asList(
@@ -2528,11 +2892,13 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Neitiznot shield", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 30)
+                new SkillRequirement(Skill.DEFENCE, 30),
+                new QuestRequirement("The Fremennik Isles")
         ));
 
         ITEM_REQUIREMENTS.put("Helm of neitiznot", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 55)
+                new SkillRequirement(Skill.DEFENCE, 55),
+                new QuestRequirement("The Fremennik Isles")
         ));
 
         ITEM_REQUIREMENTS.put("Frog-leather body", Arrays.asList(
@@ -2551,15 +2917,22 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Brine sabre", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 40)
+                new SkillRequirement(Skill.ATTACK, 40),
+                new QuestRequirement("Olaf's Quest")
         ));
 
         ITEM_REQUIREMENTS.put("Ancient mace", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 15)
+                new SkillRequirement(Skill.ATTACK, 15),
+                new QuestRequirement("Another Slice of H.A.M.")
+        ));
+
+        ITEM_REQUIREMENTS.put("Inoculation bracelet", Arrays.asList(
+                new QuestRequirement("Zogre Flesh Eaters")
         ));
 
         ITEM_REQUIREMENTS.put("Dwarven helmet", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 50)
+                new SkillRequirement(Skill.DEFENCE, 50),
+                new QuestRequirement("Grim Tales")
         ));
 
         ITEM_REQUIREMENTS.put("Dragon arrow", Arrays.asList(
@@ -2599,7 +2972,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Dragonfire shield", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 75)
+                new SkillRequirement(Skill.DEFENCE, 75),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Dragon full helm", Arrays.asList(
@@ -2780,6 +3154,11 @@ public class EquipmentRequirementsData
                 new SkillRequirement(Skill.RANGED, 65)
         ));
 
+        ITEM_REQUIREMENTS.put("Amulet of glory(6)", Arrays.asList(
+                new QuestRequirement("Dragon Slayer I"),
+                new QuestRequirement("Heroes' Quest")
+        ));
+
         ITEM_REQUIREMENTS.put("Smoke battlestaff", Arrays.asList(
                 new SkillRequirement(Skill.ATTACK, 30),
                 new SkillRequirement(Skill.MAGIC, 30)
@@ -2869,7 +3248,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Dragon cane", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 60)
+                new SkillRequirement(Skill.ATTACK, 60),
+                new QuestRequirement("Heroes' Quest")
         ));
 
         ITEM_REQUIREMENTS.put("Black cane", Arrays.asList(
@@ -2910,6 +3290,14 @@ public class EquipmentRequirementsData
                 new SkillRequirement(Skill.DEFENCE, 40)
         ));
 
+        ITEM_REQUIREMENTS.put("Partyhat & specs", Arrays.asList(
+                new QuestRequirement("Cabin Fever")
+        ));
+
+        ITEM_REQUIREMENTS.put("Pirate hat & patch", Arrays.asList(
+                new QuestRequirement("Cabin Fever")
+        ));
+
         ITEM_REQUIREMENTS.put("3rd age wand", Arrays.asList(
                 new SkillRequirement(Skill.MAGIC, 65)
         ));
@@ -2922,8 +3310,13 @@ public class EquipmentRequirementsData
                 new SkillRequirement(Skill.ATTACK, 65)
         ));
 
+        ITEM_REQUIREMENTS.put("Top hat & monocle", Arrays.asList(
+                new QuestRequirement("Cabin Fever")
+        ));
+
         ITEM_REQUIREMENTS.put("Ancient platebody", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Ancient platelegs", Arrays.asList(
@@ -2943,7 +3336,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Armadyl platebody", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Armadyl platelegs", Arrays.asList(
@@ -2963,7 +3357,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Bandos platebody", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Bandos platelegs", Arrays.asList(
@@ -3141,7 +3536,9 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Heavy ballista", Arrays.asList(
-                new SkillRequirement(Skill.RANGED, 75)
+                new SkillRequirement(Skill.RANGED, 75),
+                new QuestRequirement("Monkey Madness I"),
+                new QuestRequirement("Monkey Madness II")
         ));
 
         ITEM_REQUIREMENTS.put("Dragon javelin", Arrays.asList(
@@ -3158,6 +3555,10 @@ public class EquipmentRequirementsData
 
         ITEM_REQUIREMENTS.put("Dragon javelin(p++)", Arrays.asList(
                 new SkillRequirement(Skill.RANGED, 65)
+        ));
+
+        ITEM_REQUIREMENTS.put("Double eye patch", Arrays.asList(
+                new QuestRequirement("Cabin Fever")
         ));
 
         ITEM_REQUIREMENTS.put("Ancient d'hide boots", Arrays.asList(
@@ -3463,7 +3864,8 @@ public class EquipmentRequirementsData
 
         ITEM_REQUIREMENTS.put("Ancient wyvern shield", Arrays.asList(
                 new SkillRequirement(Skill.DEFENCE, 75),
-                new SkillRequirement(Skill.MAGIC, 70)
+                new SkillRequirement(Skill.MAGIC, 70),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Granite boots", Arrays.asList(
@@ -3495,11 +3897,14 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Dragon platebody", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 60)
+                new SkillRequirement(Skill.DEFENCE, 60),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Dragon kiteshield", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 60)
+                new SkillRequirement(Skill.DEFENCE, 60),
+                new QuestRequirement("Dragon Slayer I"),
+                new QuestRequirement("Legends' Quest")
         ));
 
         ITEM_REQUIREMENTS.put("Dragon crossbow", Arrays.asList(
@@ -3604,7 +4009,8 @@ public class EquipmentRequirementsData
 
         ITEM_REQUIREMENTS.put("Dragonfire ward", Arrays.asList(
                 new SkillRequirement(Skill.DEFENCE, 75),
-                new SkillRequirement(Skill.RANGED, 70)
+                new SkillRequirement(Skill.RANGED, 70),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Oak shield", Arrays.asList(
@@ -3779,7 +4185,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Dragon hunter lance", Arrays.asList(
-                new SkillRequirement(Skill.ATTACK, 70)
+                new SkillRequirement(Skill.ATTACK, 70),
+                new QuestRequirement("Tai Bwo Wannai Trio")
         ));
 
         ITEM_REQUIREMENTS.put("Mystic hat (dusk)", Arrays.asList(
@@ -3838,23 +4245,28 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Rune platebody (h1)", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Rune platebody (h2)", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Rune platebody (h3)", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Rune platebody (h4)", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Rune platebody (h5)", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("3rd age plateskirt", Arrays.asList(
@@ -3871,7 +4283,8 @@ public class EquipmentRequirementsData
 
         ITEM_REQUIREMENTS.put("Gilded d'hide body", Arrays.asList(
                 new SkillRequirement(Skill.DEFENCE, 40),
-                new SkillRequirement(Skill.RANGED, 40)
+                new SkillRequirement(Skill.RANGED, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Gilded d'hide chaps", Arrays.asList(
@@ -3942,6 +4355,10 @@ public class EquipmentRequirementsData
                 new SkillRequirement(Skill.DEFENCE, 30)
         ));
 
+        ITEM_REQUIREMENTS.put("Climbing boots (g)", Arrays.asList(
+                new QuestRequirement("Death Plateau")
+        ));
+
         ITEM_REQUIREMENTS.put("Sarachnis cudgel", Arrays.asList(
                 new SkillRequirement(Skill.ATTACK, 65)
         ));
@@ -3955,7 +4372,8 @@ public class EquipmentRequirementsData
         ));
 
         ITEM_REQUIREMENTS.put("Dragonstone platebody", Arrays.asList(
-                new SkillRequirement(Skill.DEFENCE, 40)
+                new SkillRequirement(Skill.DEFENCE, 40),
+                new QuestRequirement("Dragon Slayer I")
         ));
 
         ITEM_REQUIREMENTS.put("Dragonstone platelegs", Arrays.asList(
