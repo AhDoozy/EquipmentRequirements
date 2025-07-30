@@ -1,1 +1,1 @@
-🔧🚧 **Work in Progress**: Epic content crafting underway… Stay tuned for the grand reveal! 🚧🔧
+🔧🚧 **Work in Progress** 🚧🔧
