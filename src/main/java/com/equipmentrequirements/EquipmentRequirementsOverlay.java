@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import net.runelite.api.Client;
 import net.runelite.client.game.ItemManager;
+import com.equipmentrequirements.EquipmentRequirementsPlugin;
 import net.runelite.client.ui.overlay.WidgetItemOverlay;
 import net.runelite.client.util.Text;
 import net.runelite.api.widgets.WidgetItem;
@@ -13,6 +14,8 @@ import javax.inject.Inject;
 import java.awt.*;
 import java.util.List;
 import java.util.ArrayList;
+import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.api.widgets.InterfaceID;
 
 @Singleton
 @Slf4j
@@ -21,16 +24,23 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 	private final Client client;
 	private final EquipmentRequirementsConfig config;
 	private final ItemManager itemManager;
+	private final EquipmentRequirementsPlugin plugin;
 
 	@Inject
-	public EquipmentRequirementsOverlay(Client client, EquipmentRequirementsConfig config, ItemManager itemManager)
+	public EquipmentRequirementsOverlay(
+		Client client,
+		EquipmentRequirementsConfig config,
+		ItemManager itemManager,
+		EquipmentRequirementsPlugin plugin
+	)
 	{
 		this.client = client;
 		this.config = config;
 		this.itemManager = itemManager;
-		showOnBank();
+		this.plugin = plugin;
 		showOnInventory();
-		showOnInterfaces(); // covers GE
+		showOnBank();
+		showOnInterfaces(InterfaceID.SHOP, InterfaceID.GRAND_EXCHANGE);
 	}
 
 	@Override
@@ -39,6 +49,11 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 		if (item.getWidget() == null)
 		{
 			return;
+		}
+
+		if (client.getWidget(320) != null || client.getWidget(1212) != null || client.getWidget(210) != null)
+		{
+			return; // Skip overlay if Skill Guide is open
 		}
 
 		net.runelite.api.Point mousePos = client.getMouseCanvasPosition();
@@ -150,4 +165,5 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 			}
 		}
 	}
+
 }
