@@ -57,7 +57,7 @@ public class EquipmentRequirementsPlugin extends Plugin
 
 	public void reloadRequirements()
 	{
-		EquipmentRequirementsData.loadRequirements();
+		EquipmentRequirementsData.loadFromJson();
 		log.info("Equipment requirements reloaded.");
 		// Trigger overlay redraw if needed
 		overlayManager.remove(overlay);
