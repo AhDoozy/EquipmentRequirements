@@ -64,12 +64,15 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 		String itemName = Text.removeTags(itemManager.getItemComposition(itemId).getName());
 		log.debug("Resolved item name: {}", itemName);
 
-		if (!EquipmentRequirementsData.ITEM_REQUIREMENTS.containsKey(itemName))
-		{
-			return;
-		}
-
 		List<Requirement> requirements = EquipmentRequirementsData.ITEM_REQUIREMENTS.get(itemName);
+		if (requirements == null)
+		{
+			requirements = EquipmentRequirementsData.ITEM_REQUIREMENTS_BY_ID.get(itemId);
+			if (requirements == null)
+			{
+				return;
+			}
+		}
 		boolean unmet = false;
 
 		// Prepare lines and their met status
