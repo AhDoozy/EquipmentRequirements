@@ -4,6 +4,7 @@ import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 
 import net.runelite.api.Client;
+import net.runelite.api.ItemComposition;
 import net.runelite.client.game.ItemManager;
 import com.equipmentrequirements.EquipmentRequirementsPlugin;
 import net.runelite.client.ui.overlay.WidgetItemOverlay;
@@ -60,15 +61,18 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 		Point mouse = new Point(mousePos.getX(), mousePos.getY());
 
 		Rectangle bounds = item.getCanvasBounds();
+		int lookupId = itemId;
+		ItemComposition comp = itemManager.getItemComposition(itemId);
+		if (comp.getNote() != -1) {
+		    lookupId = comp.getLinkedNoteId();
+		}
+		String itemName = Text.removeTags(itemManager.getItemComposition(lookupId).getName());
 
-		String itemName = Text.removeTags(itemManager.getItemComposition(itemId).getName());
-		log.debug("Resolved item name: {}", itemName);
-
-		List<Requirement> requirements = EquipmentRequirementsData.ITEM_REQUIREMENTS.get(itemName);
-		if (requirements == null)
+		List<Requirement> requirements = EquipmentRequirementsData.ITEM_REQUIREMENTS_BY_ID.get(lookupId);
+		if (requirements == null || requirements.isEmpty())
 		{
-			requirements = EquipmentRequirementsData.ITEM_REQUIREMENTS_BY_ID.get(itemId);
-			if (requirements == null)
+			requirements = EquipmentRequirementsData.ITEM_REQUIREMENTS.get(itemName);
+			if (requirements == null || requirements.isEmpty())
 			{
 				return;
 			}
@@ -90,6 +94,7 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 			metStatus.add(met);
 		}
 
+		// Only show icon if there are unmet requirements
 		if (!unmet)
 		{
 			return;
@@ -109,8 +114,9 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 		graphics.drawString("i", x, y - 1);
 		graphics.drawString("i", x, y + 1);
 
-		// Draw main "i"
-		graphics.setColor(Color.RED);
+		// Draw main "i" with color based on unmet status
+		Color iconColor = unmet ? new Color(255, 0, 0) : new Color(0, 255, 0);
+		graphics.setColor(iconColor);
 		graphics.drawString("i", x, y);
 
 		if (item.getCanvasBounds().contains(mouse))

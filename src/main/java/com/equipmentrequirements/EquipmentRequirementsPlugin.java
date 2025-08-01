@@ -13,6 +13,7 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import com.equipmentrequirements.EquipmentRequirementsData;
 
 @Slf4j
 @PluginDescriptor(
@@ -68,7 +69,7 @@ public class EquipmentRequirementsPlugin extends Plugin
 	public void onCommandExecuted(CommandExecuted event)
 	{
 		String command = event.getCommand().toLowerCase();
-		if (command.equals("reloadeqreq"))
+		if (command.equals("reloadreq"))
 		{
 			reloadRequirements();
 			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Equipment requirements reloaded!", null);

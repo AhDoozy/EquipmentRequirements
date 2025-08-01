@@ -59,3 +59,11 @@ tasks.register('shadowJar', Jar) {
 	archiveClassifier.set('shadow')
 	archiveFileName.set("${rootProject.name}-${project.version}-all.jar")
 }
+
+sourceSets {
+	test {
+		resources {
+			srcDirs += 'src/main/resources'
+		}
+	}
+}

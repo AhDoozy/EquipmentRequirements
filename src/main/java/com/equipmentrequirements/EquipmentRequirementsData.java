@@ -19,9 +19,15 @@ import java.lang.reflect.Type;
 import java.io.InputStream;
 import java.util.Map.Entry;
 import java.util.ArrayList;
+import java.io.File;
+import java.io.FileInputStream;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class EquipmentRequirementsData
 {
+    private static final Logger log = LoggerFactory.getLogger(EquipmentRequirementsData.class);
     public static final Map<String, List<Requirement>> ITEM_REQUIREMENTS = new HashMap<>();
     public static final Map<Integer, List<Requirement>> ITEM_REQUIREMENTS_BY_ID = new HashMap<>();
 
@@ -36,6 +42,9 @@ public class EquipmentRequirementsData
     }
 
     public static void loadFromJson() {
+        log.info("Beginning loadFromJson() for equipment requirements");
+        ITEM_REQUIREMENTS.clear();
+        ITEM_REQUIREMENTS_BY_ID.clear();
         Gson gson = new Gson();
         // Try loading from classpath root
         InputStream summaryStream = EquipmentRequirementsData.class.getClassLoader().getResourceAsStream("items-summary.json");
@@ -52,18 +61,30 @@ public class EquipmentRequirementsData
                     .getResourceAsStream("/com/equipmentrequirements/items-summary.json");
             }
         }
-        InputStream skillStream = EquipmentRequirementsData.class.getClassLoader().getResourceAsStream("items-skill-requirements.json");
-        if (skillStream == null) {
-            skillStream = EquipmentRequirementsData.class.getResourceAsStream("/items-skill-requirements.json");
-        }
-        if (skillStream == null) {
-            // Try loading from package-specific path
-            skillStream = EquipmentRequirementsData.class.getClassLoader()
-                .getResourceAsStream("com/equipmentrequirements/items-skill-requirements.json");
-            if (skillStream == null) {
-                skillStream = EquipmentRequirementsData.class
-                    .getResourceAsStream("/com/equipmentrequirements/items-skill-requirements.json");
+        // Allow loading updated JSON during development
+        File externalSkillFile = new File("src/main/resources/items-skill-requirements.json");
+        InputStream skillStream;
+        try {
+            if (externalSkillFile.exists()) {
+                log.info("Loading skill requirements from external file: {}", externalSkillFile.getAbsolutePath());
+                skillStream = new FileInputStream(externalSkillFile);
+            } else {
+                skillStream = EquipmentRequirementsData.class.getClassLoader().getResourceAsStream("items-skill-requirements.json");
+                if (skillStream == null) {
+                    skillStream = EquipmentRequirementsData.class.getResourceAsStream("/items-skill-requirements.json");
+                }
+                if (skillStream == null) {
+                    // Try loading from package-specific path
+                    skillStream = EquipmentRequirementsData.class.getClassLoader()
+                        .getResourceAsStream("com/equipmentrequirements/items-skill-requirements.json");
+                    if (skillStream == null) {
+                        skillStream = EquipmentRequirementsData.class
+                            .getResourceAsStream("/com/equipmentrequirements/items-skill-requirements.json");
+                    }
+                }
             }
+        } catch (java.io.IOException e) {
+            throw new RuntimeException("Failed to open external skill requirements file: " + e.getMessage(), e);
         }
 
         if (summaryStream == null) {
@@ -115,6 +136,7 @@ public class EquipmentRequirementsData
             JsonElement skillsElement = gson.fromJson(skillReader, JsonElement.class);
             if (skillsElement.isJsonObject()) {
                 JsonObject skillsObj = skillsElement.getAsJsonObject();
+                log.info("Skill requirement entries loaded for IDs: {}", skillsObj.keySet());
                 for (Map.Entry<String, JsonElement> skillEntry : skillsObj.entrySet()) {
                     int id = Integer.parseInt(skillEntry.getKey());
                     JsonObject reqObj = skillEntry.getValue().getAsJsonObject();
@@ -130,6 +152,8 @@ public class EquipmentRequirementsData
                             // Unknown skill key (e.g., "COMBAT"), skip this entry
                         }
                     }
+
+                    log.info("Loaded requirements for item ID {}: {}", id, reqList);
 
                     String name = idToName.get(id);
                     if (name != null) {
