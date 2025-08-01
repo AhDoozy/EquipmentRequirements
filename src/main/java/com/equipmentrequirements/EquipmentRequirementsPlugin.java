@@ -70,6 +70,7 @@ public class EquipmentRequirementsPlugin extends Plugin
 	{
 		String command = event.getCommand().toLowerCase();
 		if (command.equals("reloadreq"))
+
 		{
 			reloadRequirements();
 			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Equipment requirements reloaded!", null);

@@ -1,23 +1,17 @@
 package com.equipmentrequirements;
 
 import net.runelite.api.Skill;
-import net.runelite.api.ItemID;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
-import java.util.Arrays;
-import com.equipmentrequirements.QuestRequirement;
-import com.equipmentrequirements.Requirement;
-import com.equipmentrequirements.SkillRequirement;
+
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.io.InputStream;
-import java.util.Map.Entry;
 import java.util.ArrayList;
 import java.io.File;
 import java.io.FileInputStream;
@@ -42,130 +36,106 @@ public class EquipmentRequirementsData
     }
 
     public static void loadFromJson() {
-        log.info("Beginning loadFromJson() for equipment requirements");
+        log.info("Loading equipment requirements from Items-Information.json");
         ITEM_REQUIREMENTS.clear();
         ITEM_REQUIREMENTS_BY_ID.clear();
         Gson gson = new Gson();
-        // Try loading from classpath root
-        InputStream summaryStream = EquipmentRequirementsData.class.getClassLoader().getResourceAsStream("items-summary.json");
-        if (summaryStream == null) {
-            // Fallback to class resource lookup
-            summaryStream = EquipmentRequirementsData.class.getResourceAsStream("/items-summary.json");
+
+        InputStream infoStream = EquipmentRequirementsData.class.getResourceAsStream("/Items-Information.json");
+        if (infoStream == null) {
+            infoStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("Items-Information.json");
         }
-        if (summaryStream == null) {
-            // Try loading from package-specific path
-            summaryStream = EquipmentRequirementsData.class.getClassLoader()
-                .getResourceAsStream("com/equipmentrequirements/items-summary.json");
-            if (summaryStream == null) {
-                summaryStream = EquipmentRequirementsData.class
-                    .getResourceAsStream("/com/equipmentrequirements/items-summary.json");
-            }
+        if (infoStream == null) {
+            infoStream = EquipmentRequirementsData.class.getResourceAsStream("/com/equipmentrequirements/Items-Information.json");
         }
-        // Allow loading updated JSON during development
-        File externalSkillFile = new File("src/main/resources/items-skill-requirements.json");
-        InputStream skillStream;
-        try {
-            if (externalSkillFile.exists()) {
-                log.info("Loading skill requirements from external file: {}", externalSkillFile.getAbsolutePath());
-                skillStream = new FileInputStream(externalSkillFile);
-            } else {
-                skillStream = EquipmentRequirementsData.class.getClassLoader().getResourceAsStream("items-skill-requirements.json");
-                if (skillStream == null) {
-                    skillStream = EquipmentRequirementsData.class.getResourceAsStream("/items-skill-requirements.json");
-                }
-                if (skillStream == null) {
-                    // Try loading from package-specific path
-                    skillStream = EquipmentRequirementsData.class.getClassLoader()
-                        .getResourceAsStream("com/equipmentrequirements/items-skill-requirements.json");
-                    if (skillStream == null) {
-                        skillStream = EquipmentRequirementsData.class
-                            .getResourceAsStream("/com/equipmentrequirements/items-skill-requirements.json");
-                    }
-                }
-            }
-        } catch (java.io.IOException e) {
-            throw new RuntimeException("Failed to open external skill requirements file: " + e.getMessage(), e);
+        if (infoStream == null) {
+            throw new RuntimeException("Resource Items-Information.json not found in classpath");
         }
 
-        if (summaryStream == null) {
-            throw new RuntimeException("Resource items-summary.json not found in classpath");
-        }
-        if (skillStream == null) {
-            throw new RuntimeException("Resource items-skill-requirements.json not found in classpath");
-        }
-
-        try (InputStreamReader summaryReader = new InputStreamReader(summaryStream);
-             InputStreamReader skillReader = new InputStreamReader(skillStream)) {
-
-            // Read summary JSON into a generic JsonElement
-            JsonElement summaryElement = gson.fromJson(summaryReader, JsonElement.class);
-            Map<Integer, String> idToName = new HashMap<>();
-            if (summaryElement.isJsonObject()) {
-                JsonObject summaryObj = summaryElement.getAsJsonObject();
-                if (summaryObj.has("items") && summaryObj.get("items").isJsonArray()) {
-                    // Format: { "items": [ { "id":123, "name":"Priest gown" }, ... ] }
-                    JsonArray itemsArray = summaryObj.getAsJsonArray("items");
-                    for (JsonElement elem : itemsArray) {
-                        JsonObject obj = elem.getAsJsonObject();
-                        int id = obj.get("id").getAsInt();
-                        String name = obj.get("name").getAsString();
-                        idToName.put(id, name);
-                    }
+        try (InputStreamReader reader = new InputStreamReader(infoStream)) {
+            JsonElement rootElement = gson.fromJson(reader, JsonElement.class);
+            JsonArray itemsArray;
+            if (rootElement.isJsonArray()) {
+                itemsArray = rootElement.getAsJsonArray();
+            } else if (rootElement.isJsonObject()) {
+                JsonObject rootObj = rootElement.getAsJsonObject();
+                if (rootObj.has("items") && rootObj.get("items").isJsonArray()) {
+                    itemsArray = rootObj.getAsJsonArray("items");
                 } else {
-                    // Format: { "123": "Priest gown" } or { "123": { "name":"Priest gown", ... } }
-                    for (Map.Entry<String, JsonElement> entry2 : summaryObj.entrySet()) {
-                        int id = Integer.parseInt(entry2.getKey());
-                        JsonElement val = entry2.getValue();
-                        String name;
-                        if (val.isJsonPrimitive()) {
-                            name = val.getAsString();
-                        } else if (val.isJsonObject() && val.getAsJsonObject().has("name")) {
-                            name = val.getAsJsonObject().get("name").getAsString();
-                        } else {
-                            // Unknown format for this entry; skip it
+                    itemsArray = new JsonArray();
+                    for (Map.Entry<String, JsonElement> entry : rootObj.entrySet()) {
+                        if (!entry.getValue().isJsonObject()) {
                             continue;
                         }
-                        idToName.put(id, name);
+                        JsonObject itemObjEntry = entry.getValue().getAsJsonObject();
+                        try {
+                            int implicitId = Integer.parseInt(entry.getKey());
+                            itemObjEntry.addProperty("id", implicitId);
+                        } catch (NumberFormatException ex) {
+                            // Non-numeric key, skip attaching id
+                        }
+                        itemsArray.add(itemObjEntry);
                     }
                 }
             } else {
-                throw new RuntimeException("Unexpected summary JSON format, expected object at root");
+                throw new RuntimeException("Unexpected JSON format: expected array or object at root");
             }
-
-            // Parse skill requirements JSON: expecting { "id": { "<skill>": <level>, ... }, ... }
-            JsonElement skillsElement = gson.fromJson(skillReader, JsonElement.class);
-            if (skillsElement.isJsonObject()) {
-                JsonObject skillsObj = skillsElement.getAsJsonObject();
-                log.info("Skill requirement entries loaded for IDs: {}", skillsObj.keySet());
-                for (Map.Entry<String, JsonElement> skillEntry : skillsObj.entrySet()) {
-                    int id = Integer.parseInt(skillEntry.getKey());
-                    JsonObject reqObj = skillEntry.getValue().getAsJsonObject();
-
-                    List<Requirement> reqList = new ArrayList<>();
-                    for (Map.Entry<String, JsonElement> reqEntry : reqObj.entrySet()) {
-                        String skillKey = reqEntry.getKey().toUpperCase();
-                        int level = reqEntry.getValue().getAsInt();
+            for (JsonElement elem : itemsArray) {
+                JsonObject itemObj = elem.getAsJsonObject();
+                int id = itemObj.get("id").getAsInt();
+                String name = itemObj.get("name").getAsString();
+                List<Requirement> reqList = new ArrayList<>();
+                if (itemObj.has("requirements") && itemObj.get("requirements").isJsonObject()) {
+                    JsonObject reqObj = itemObj.getAsJsonObject("requirements");
+                    for (Map.Entry<String, JsonElement> entry : reqObj.entrySet()) {
+                        String skillKey = entry.getKey().toUpperCase();
+                        if (skillKey.equalsIgnoreCase("quests") && entry.getValue().isJsonArray()) {
+                            JsonArray questArray = entry.getValue().getAsJsonArray();
+                            for (JsonElement questElem : questArray) {
+                                if (questElem.isJsonPrimitive()) {
+                                    String questName = questElem.getAsString();
+                                    reqList.add(new QuestRequirement(questName));
+                                }
+                            }
+                            continue; // Skip further processing for this key
+                        }
+                        int level = entry.getValue().getAsInt();
                         try {
                             Skill skill = Skill.valueOf(skillKey);
                             reqList.add(new SkillRequirement(skill, level));
                         } catch (IllegalArgumentException e) {
-                            // Unknown skill key (e.g., "COMBAT"), skip this entry
+                            // Unknown skill key, skip this entry
                         }
                     }
-
-                    log.info("Loaded requirements for item ID {}: {}", id, reqList);
-
-                    String name = idToName.get(id);
-                    if (name != null) {
-                        ITEM_REQUIREMENTS.put(name, reqList);
-                    }
-                    ITEM_REQUIREMENTS_BY_ID.put(id, reqList);
                 }
-            } else {
-                throw new RuntimeException("Unexpected skill JSON format, expected object at root");
+                ITEM_REQUIREMENTS.put(name, reqList);
+                ITEM_REQUIREMENTS_BY_ID.put(id, reqList);
+                log.info("Loaded requirements for item {} (ID {}): {}", name, id, reqList);
             }
         } catch (Exception e) {
-            throw new RuntimeException("Failed to load equipment requirements from JSON: " + e.getMessage(), e);
+            throw new RuntimeException("Failed to load equipment requirements: " + e.getMessage(), e);
         }
     }
+    /**
+     * Returns the loaded equipment requirements mapped by item name.
+     */
+    public static Map<String, List<Requirement>> getRequirements() {
+        return ITEM_REQUIREMENTS;
+    }
+
+    /**
+     * Returns the loaded equipment requirements mapped by item ID.
+     */
+    public static Map<Integer, List<Requirement>> getRequirementsById() {
+        return ITEM_REQUIREMENTS_BY_ID;
+    }
+
+    /**
+     * Reloads the equipment requirements from the Items-Information.json file.
+     */
+    public static void reloadRequirements()
+    {
+        loadFromJson();
+    }
+
 }

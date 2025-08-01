@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.ArrayList;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.InterfaceID;
+import net.runelite.api.Quest;
 
 @Singleton
 @Slf4j
@@ -86,6 +87,12 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 		for (Requirement req : requirements)
 		{
 			boolean met = req.isMet(client);
+			if (req instanceof QuestRequirement)
+			{
+			    // Always show quest requirements (no completion check currently)
+			    met = false;
+			}
+
 			if (!met)
 			{
 				unmet = true;
