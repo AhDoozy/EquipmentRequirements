@@ -107,7 +107,7 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 			return;
 		}
 
-		graphics.setFont(new Font("Arial", Font.BOLD, 22));
+		graphics.setFont(new Font("Runescape UF", Font.PLAIN, 18));
 		graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 		FontMetrics fm = graphics.getFontMetrics();
 		int textWidth = fm.stringWidth("i");
@@ -122,13 +122,14 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 		graphics.drawString("i", x, y + 1);
 
 		// Draw main "i" with color based on unmet status
-		Color iconColor = unmet ? new Color(255, 0, 0) : new Color(0, 255, 0);
+		Color iconColor = unmet ? new Color(255, 65, 65) : new Color(40, 220, 40);
 		graphics.setColor(iconColor);
 		graphics.drawString("i", x, y);
 
 		if (item.getCanvasBounds().contains(mouse))
 		{
-			Font tooltipFont = new Font("RuneScape Bold", Font.PLAIN, 16);
+			// Use RuneScape font at size 16 for tooltip for clarity and consistency
+			Font tooltipFont = new Font("RuneScape UF", Font.PLAIN, 10);
 			graphics.setFont(tooltipFont);
 			FontMetrics tooltipFontMetrics = graphics.getFontMetrics();
 
@@ -167,14 +168,14 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 				boolean met = metStatus.get(i);
 
 				// Draw outline
-				graphics.setColor(Color.BLACK);
+				graphics.setColor(Color.black);
 				graphics.drawString(line, tooltipX + paddingX - 1, yOffset - 1);
 				graphics.drawString(line, tooltipX + paddingX + 1, yOffset - 1);
 				graphics.drawString(line, tooltipX + paddingX, yOffset - 2);
 				graphics.drawString(line, tooltipX + paddingX, yOffset);
 
 				// Draw main text with color based on met status
-				graphics.setColor(met ? new Color(0, 255, 0) : new Color(255, 0, 0)); // green if met, red if unmet
+				graphics.setColor(met ? new Color(0, 220, 0) : new Color(255, 65, 65)); // green if met, red if unmet
 				graphics.drawString(line, tooltipX + paddingX, yOffset - 1);
 
 				yOffset += lineHeight;
