@@ -45,6 +45,35 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 		showOnInterfaces(InterfaceID.SHOP, InterfaceID.GRAND_EXCHANGE);
 	}
 
+    /**
+     * Clamp the tooltip position to ensure the tooltip box stays within the canvas.
+     */
+    private Point clampTooltipPosition(int x, int y, int boxWidth, int boxHeight)
+    {
+        int canvasWidth = client.getCanvasWidth();
+        int canvasHeight = client.getCanvasHeight();
+
+        if (x + boxWidth > canvasWidth)
+        {
+            x = canvasWidth - boxWidth - 2;
+        }
+        if (x < 0)
+        {
+            x = 2;
+        }
+
+        if (y < 0)
+        {
+            y = 2;
+        }
+        if (y + boxHeight > canvasHeight)
+        {
+            y = canvasHeight - boxHeight - 2;
+        }
+
+        return new Point(x, y);
+    }
+
 	@Override
 	public void renderItemOverlay(Graphics2D graphics, int itemId, WidgetItem item)
 	{
@@ -153,6 +182,10 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 
 			int tooltipX = bounds.x - paddingX;
 			int tooltipY = bounds.y - boxHeight - paddingY;
+
+            Point clamped = clampTooltipPosition(tooltipX, tooltipY, boxWidth, boxHeight);
+            tooltipX = clamped.x;
+            tooltipY = clamped.y;
 
 			graphics.setColor(new Color(60, 52, 41)); // background
 			graphics.fillRect(tooltipX, tooltipY, boxWidth, boxHeight);
