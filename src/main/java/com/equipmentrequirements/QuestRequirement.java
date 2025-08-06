@@ -3,62 +3,31 @@ package com.equipmentrequirements;
 import com.equipmentrequirements.Requirement;
 import net.runelite.api.Client;
 import com.equipmentrequirements.Quest;
+import net.runelite.api.QuestState;
 
 public class QuestRequirement implements Requirement
 {
-    private final String questName;
+    private final Quest quest;
 
-    public QuestRequirement(String questName)
+    public QuestRequirement(Quest quest)
     {
-        this.questName = questName;
-    }
-
-    private int getQuestProgress(Client client)
-    {
-        Quest q;
-        try
-        {
-            String normalizedName = questName.trim()
-                .toUpperCase()
-                .replace(" ", "_")
-                .replace("'", "")
-                .replace("-", "")
-                .replace("&", "AND");
-            q = Quest.valueOf(normalizedName);
-        }
-        catch (IllegalArgumentException ex)
-        {
-            return -1;
-        }
-
-        if (q.getVarbit() != null)
-        {
-            return client.getVarbitValue(q.getVarbit().getId());
-        }
-        else if (q.getVarPlayer() != null)
-        {
-            return client.getVarpValue(q.getVarPlayer().getId());
-        }
-        else
-        {
-            return -1;
-        }
+        this.quest = quest;
     }
 
     @Override
     public boolean isMet(Client client)
     {
-        return getQuestProgress(client) >= 1;
+        return quest.getState(client) == QuestState.FINISHED;
     }
 
     @Override
     public String getMessage()
     {
-        return "Requires " + questName;
+        return "Requires " + quest.getName();
     }
 
-    public String getQuestName()
+    public Quest getQuest()
     {
-        return questName;
+        return quest;
     }
 }

@@ -13,11 +13,15 @@ import com.google.gson.JsonElement;
 import java.io.InputStreamReader;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.io.File;
-import java.io.FileInputStream;
+
+import com.equipmentrequirements.Requirement;
+import com.equipmentrequirements.QuestRequirement;
+import com.equipmentrequirements.SkillRequirement;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.equipmentrequirements.Quest;
 
 public class EquipmentRequirementsData
 {
@@ -94,7 +98,15 @@ public class EquipmentRequirementsData
                             for (JsonElement questElem : questArray) {
                                 if (questElem.isJsonPrimitive()) {
                                     String questName = questElem.getAsString();
-                                    reqList.add(new QuestRequirement(questName));
+                                    try
+                                    {
+                                        Quest q = Quest.fromName(questName);
+                                        reqList.add(new QuestRequirement(q));
+                                    }
+                                    catch (IllegalArgumentException ex)
+                                    {
+                                        log.warn("Unknown quest requirement: {}", questName);
+                                    }
                                 }
                             }
                             continue; // Skip further processing for this key

@@ -3089,10 +3089,7 @@
     "id": 4178,
     "name": "Abyssal whip",
     "requirements": {
-      "attack": 70,
-      "quests": [
-        "Abyssal demons (Slayer level 85)"
-      ]
+      "attack": 70
     }
   },
   "4180": {
