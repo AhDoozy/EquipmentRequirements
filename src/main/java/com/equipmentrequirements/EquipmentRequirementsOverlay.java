@@ -10,6 +10,7 @@ import com.equipmentrequirements.EquipmentRequirementsPlugin;
 import net.runelite.client.ui.overlay.WidgetItemOverlay;
 import net.runelite.client.util.Text;
 import net.runelite.api.widgets.WidgetItem;
+import net.runelite.api.widgets.Widget;
 
 import javax.inject.Inject;
 import java.awt.*;
@@ -18,6 +19,9 @@ import java.util.ArrayList;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.InterfaceID;
 import net.runelite.api.Quest;
+import net.runelite.api.events.BeforeRender;
+import net.runelite.api.events.ClientTick;
+import net.runelite.client.eventbus.Subscribe;
 
 @Singleton
 @Slf4j
@@ -77,6 +81,10 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 	@Override
 	public void renderItemOverlay(Graphics2D graphics, int itemId, WidgetItem item)
 	{
+		net.runelite.api.Point mousePos = client.getMouseCanvasPosition();
+		Point mouse = new Point(mousePos.getX(), mousePos.getY());
+		boolean hoveringSomething = false;
+
 		if (item.getWidget() == null)
 		{
 			return;
@@ -86,9 +94,6 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 		{
 			return; // Skip overlay if Skill Guide is open
 		}
-
-		net.runelite.api.Point mousePos = client.getMouseCanvasPosition();
-		Point mouse = new Point(mousePos.getX(), mousePos.getY());
 
 		Rectangle bounds = item.getCanvasBounds();
 		int lookupId = itemId;
@@ -157,63 +162,31 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 
 		if (item.getCanvasBounds().contains(mouse))
 		{
-			// Use RuneScape font at size 16 for tooltip for clarity and consistency
-			Font tooltipFont = new Font("RuneScape UF", Font.PLAIN, 10);
-			graphics.setFont(tooltipFont);
-			FontMetrics tooltipFontMetrics = graphics.getFontMetrics();
-
-			int lineHeight = tooltipFontMetrics.getHeight();
-
-			// Calculate max line width
-			int maxWidth = 0;
-			for (String line : lines)
-			{
-				int lineWidth = tooltipFontMetrics.stringWidth(line);
-				if (lineWidth > maxWidth)
-				{
-					maxWidth = lineWidth;
-				}
-			}
-
-			int paddingX = 8;
-			int paddingY = 6;
-			int boxWidth = maxWidth + 2 * paddingX;
-			int boxHeight = lineHeight * lines.size() + 2 * paddingY;
-
-			int tooltipX = bounds.x - paddingX;
-			int tooltipY = bounds.y - boxHeight - paddingY;
-
-            Point clamped = clampTooltipPosition(tooltipX, tooltipY, boxWidth, boxHeight);
-            tooltipX = clamped.x;
-            tooltipY = clamped.y;
-
-			graphics.setColor(new Color(60, 52, 41)); // background
-			graphics.fillRect(tooltipX, tooltipY, boxWidth, boxHeight);
-
-			graphics.setColor(new Color(90, 82, 71)); // border
-			graphics.drawRect(tooltipX, tooltipY, boxWidth, boxHeight);
-
-			int yOffset = tooltipY + paddingY + tooltipFontMetrics.getAscent();
-
-			for (int i = 0; i < lines.size(); i++)
-			{
-				String line = lines.get(i);
-				boolean met = metStatus.get(i);
-
-				// Draw outline
-				graphics.setColor(Color.black);
-				graphics.drawString(line, tooltipX + paddingX - 1, yOffset - 1);
-				graphics.drawString(line, tooltipX + paddingX + 1, yOffset - 1);
-				graphics.drawString(line, tooltipX + paddingX, yOffset - 2);
-				graphics.drawString(line, tooltipX + paddingX, yOffset);
-
-				// Draw main text with color based on met status
-				graphics.setColor(met ? new Color(0, 220, 0) : new Color(255, 65, 65)); // green if met, red if unmet
-				graphics.drawString(line, tooltipX + paddingX, yOffset - 1);
-
-				yOffset += lineHeight;
-			}
+			System.out.println("Hovered item: " + item.getId());
+			plugin.getTooltipOverlay().renderItemOverlay(item, mouse, lines, metStatus);
+			plugin.markTooltipSetThisFrame();
+			plugin.updateHoveredItem(item);
+			hoveringSomething = true;
 		}
-	}
 
+		if (!hoveringSomething)
+		{
+			plugin.updateHoveredItem(null);
+		}
+
+	}
+    @Subscribe
+    public void onBeforeRender(BeforeRender event)
+    {
+        plugin.resetTooltipFlag();
+    }
+
+    @Subscribe
+    public void onClientTick(ClientTick event)
+    {
+        if (!plugin.wasTooltipSetThisFrame())
+        {
+            plugin.getTooltipOverlay().clearHoveredTooltip();
+        }
+    }
 }
