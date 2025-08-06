@@ -876,7 +876,19 @@
     "id": 1127,
     "name": "Rune platebody",
     "requirements": {
-      "defence": 40
+      "defence": 40,
+      "quests": [
+        "Dragon Slayer I"
+      ]
+    }
+  },
+  "2952": {
+    "id": 2952,
+    "name": "Wolfbane",
+    "requirements": {
+      "quests": [
+        "Priest In Peril"
+      ]
     }
   },
   "1133": {
@@ -927,7 +939,10 @@
     "id": 1149,
     "name": "Dragon med helm",
     "requirements": {
-      "defence": 60
+      "defence": 60,
+      "quests": [
+        "Dragon Slayer I"
+      ]
     }
   },
   "1151": {
@@ -2161,23 +2176,62 @@
   },
   "2661": {
     "id": 2661,
-    "name": "Saradomin platebody",
+    "name": "Rune platebody (Saradomin)",
     "requirements": {
-      "defence": 40
+      "defence": 40,
+      "quests": [
+        "Dragon Slayer I"
+      ]
     }
   },
   "2663": {
     "id": 2663,
-    "name": "Saradomin platelegs",
+    "name": "Rune platebody (Guthix)",
     "requirements": {
-      "defence": 40
+      "defence": 40,
+      "quests": [
+        "Dragon Slayer I"
+      ]
     }
   },
   "2665": {
     "id": 2665,
-    "name": "Saradomin full helm",
+    "name": "Rune platebody (Zamorak)",
     "requirements": {
-      "defence": 40
+      "defence": 40,
+      "quests": [
+        "Dragon Slayer I"
+      ]
+    }
+  },
+  "19286": {
+    "id": 19286,
+    "name": "Rune platebody (Bandos)",
+    "requirements": {
+      "defence": 40,
+      "quests": [
+        "Dragon Slayer I"
+      ]
+    }
+  },
+  "19289": {
+    "id": 19289,
+    "name": "Rune platebody (Armadyl)",
+    "requirements": {
+      "defence": 40,
+      "quests": [
+        "Dragon Slayer I"
+      ]
+    }
+  },
+  "19292": {
+    "id": 19292,
+    "name": "Rune platebody (Ancient)",
+    "requirements": {
+      "defence": 40,
+      "quests": [
+        "Dragon Slayer I"
+      ]
     }
   },
   "2667": {
@@ -2334,7 +2388,10 @@
     "id": 3140,
     "name": "Dragon chainbody",
     "requirements": {
-      "defence": 60
+      "defence": 60,
+      "quests": [
+        "Dragon Slayer I"
+      ]
     }
   },
   "3142": {
@@ -2571,49 +2628,164 @@
     "id": 3748,
     "name": "Fremennik helm",
     "requirements": {
-      "defence": 30
+      "defence": 30,
+      "quests": [
+        "The Fremennik Trials"
+      ]
+    }
+  },
+  "3799": {
+    "id": 3799,
+    "name": "Fremennik gloves",
+    "requirements": {
+      "quests": [
+        "The Fremennik Trials"
+      ]
+    }
+  },
+  "3797": {
+    "id": 3797,
+    "name": "Fremennik boots",
+    "requirements": {
+      "quests": [
+        "The Fremennik Trials"
+      ]
+    }
+  },
+  "3801": {
+    "id": 3801,
+    "name": "Fremennik kilt",
+    "requirements": {
+      "quests": [
+        "The Fremennik Trials"
+      ]
+    }
+  },
+  "3795": {
+    "id": 3795,
+    "name": "Fremennik hat",
+    "requirements": {
+      "quests": [
+        "The Fremennik Trials"
+      ]
+    }
+  },
+  "3779": {
+    "id": 3779,
+    "name": "Fremennik helm",
+    "requirements": {
+      "defence": 30,
+      "quests": [
+        "The Fremennik Trials"
+      ]
+    }
+  },
+  "3781": {
+    "id": 3781,
+    "name": "Fremennik helm",
+    "requirements": {
+      "defence": 30,
+      "quests": [
+        "The Fremennik Trials"
+      ]
+    }
+  },
+  "3783": {
+    "id": 3783,
+    "name": "Fremennik helm",
+    "requirements": {
+      "defence": 30,
+      "quests": [
+        "The Fremennik Trials"
+      ]
+    }
+  },
+  "3785": {
+    "id": 3785,
+    "name": "Fremennik helm",
+    "requirements": {
+      "defence": 30,
+      "quests": [
+        "The Fremennik Trials"
+      ]
     }
   },
   "3749": {
     "id": 3749,
     "name": "Archer helm",
     "requirements": {
-      "defence": 45
+      "defence": 45,
+      "quests": [
+        "The Fremennik Trials"
+      ]
     }
   },
   "3751": {
     "id": 3751,
     "name": "Berserker helm",
     "requirements": {
-      "defence": 45
+      "defence": 45,
+      "quests": [
+        "The Fremennik Trials"
+      ]
     }
   },
   "3753": {
     "id": 3753,
     "name": "Warrior helm",
     "requirements": {
-      "defence": 45
+      "defence": 45,
+      "quests": [
+        "The Fremennik Trials"
+      ]
     }
   },
   "3755": {
     "id": 3755,
     "name": "Farseer helm",
     "requirements": {
-      "defence": 45
+      "defence": 45,
+      "quests": [
+        "The Fremennik Trials"
+      ]
     }
   },
   "3757": {
     "id": 3757,
     "name": "Fremennik blade",
     "requirements": {
-      "attack": 30
+      "attack": 30,
+      "quests": [
+        "The Fremennik Trials"
+      ]
     }
   },
   "3758": {
     "id": 3758,
     "name": "Fremennik shield",
     "requirements": {
-      "defence": 30
+      "defence": 30,
+      "quests": [
+        "The Fremennik Trials"
+      ]
+    }
+  },
+  "3775": {
+    "id": 3775,
+    "name": "Fremennik cloak",
+    "requirements": {
+      "quests": [
+        "The Fremennik Trials"
+      ]
+    }
+  },
+  "3777": {
+    "id": 3777,
+    "name": "Fremennik robe",
+    "requirements": {
+      "quests": [
+        "The Fremennik Trials"
+      ]
     }
   },
   "4068": {
@@ -2655,7 +2827,10 @@
     "id": 4087,
     "name": "Dragon platelegs",
     "requirements": {
-      "defence": 60
+      "defence": 60,
+      "quests": [
+        "Dragon Slayer I"
+      ]
     }
   },
   "4089": {
@@ -2827,10 +3002,7 @@
     "id": 4151,
     "name": "Abyssal whip",
     "requirements": {
-      "attack": 70,
-      "quests": [
-        "Abyssal demons (Slayer level 85)"
-      ]
+      "attack": 70
     }
   },
   "4153": {
@@ -3334,7 +3506,10 @@
     "id": 4585,
     "name": "Dragon plateskirt",
     "requirements": {
-      "defence": 60
+      "defence": 60,
+      "quests": [
+        "Dragon Slayer I"
+      ]
     }
   },
   "4587": {
@@ -13095,7 +13270,80 @@
     "id": 20421,
     "name": "Rune platebody",
     "requirements": {
-      "defence": 40
+      "defence": 40,
+      "quests": [
+        "Dragon Slayer I"
+      ]
+    }
+  },
+  "23390": {
+    "id": 23390,
+    "name": "Rune platebody (h1)",
+    "requirements": {
+      "defence": 40,
+      "quests": [
+        "Dragon Slayer I"
+      ]
+    }
+  },
+  "23391": {
+    "id": 23391,
+    "name": "Rune platebody (h2)",
+    "requirements": {
+      "defence": 40,
+      "quests": [
+        "Dragon Slayer I"
+      ]
+    }
+  },
+  "23392": {
+    "id": 23392,
+    "name": "Rune platebody (h3)",
+    "requirements": {
+      "defence": 40,
+      "quests": [
+        "Dragon Slayer I"
+      ]
+    }
+  },
+  "23393": {
+    "id": 23393,
+    "name": "Rune platebody (h4)",
+    "requirements": {
+      "defence": 40,
+      "quests": [
+        "Dragon Slayer I"
+      ]
+    }
+  },
+  "23394": {
+    "id": 23394,
+    "name": "Rune platebody (h5)",
+    "requirements": {
+      "defence": 40,
+      "quests": [
+        "Dragon Slayer I"
+      ]
+    }
+  },
+  "2615": {
+    "id": 2615,
+    "name": "Rune platebody (g)",
+    "requirements": {
+      "defence": 40,
+      "quests": [
+        "Dragon Slayer I"
+      ]
+    }
+  },
+  "3477": {
+    "id": 3477,
+    "name": "Rune platebody (t)",
+    "requirements": {
+      "defence": 40,
+      "quests": [
+        "Dragon Slayer I"
+      ]
     }
   },
   "20422": {

@@ -1,4 +1,5 @@
 package com.equipmentrequirements;
+import net.runelite.api.QuestState;
 import javax.inject.Singleton;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.InterfaceID;
 import net.runelite.api.Quest;
+import net.runelite.api.Varbits;
 import net.runelite.api.events.BeforeRender;
 import net.runelite.api.events.ClientTick;
 import net.runelite.client.eventbus.Subscribe;
@@ -121,12 +123,6 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 		for (Requirement req : requirements)
 		{
 			boolean met = req.isMet(client);
-			if (req instanceof QuestRequirement)
-			{
-			    // Always show quest requirements (no completion check currently)
-			    met = false;
-			}
-
 			if (!met)
 			{
 				unmet = true;
@@ -162,7 +158,6 @@ public class EquipmentRequirementsOverlay extends WidgetItemOverlay
 
 		if (item.getCanvasBounds().contains(mouse))
 		{
-			System.out.println("Hovered item: " + item.getId());
 			plugin.getTooltipOverlay().renderItemOverlay(item, mouse, lines, metStatus);
 			plugin.markTooltipSetThisFrame();
 			plugin.updateHoveredItem(item);
